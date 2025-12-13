@@ -1,0 +1,97 @@
+/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py:212: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
+Overriding config with /pscratch/sd/e/es_lh/nanoGPT/config/train_shakespeare_char.py:
+# train a miniature character-level shakespeare model
+# good for debugging and playing on macbooks and such
+
+out_dir = 'out-shakespeare-char'
+eval_interval = 250 # keep frequent because we'll overfit
+eval_iters = 200
+log_interval = 10 # don't print too too often
+
+# we expect to overfit on this small dataset, so only save when val improves
+always_save_checkpoint = False
+
+wandb_log = False # override via command line if you like
+wandb_project = 'shakespeare-char'
+wandb_run_name = 'mini-gpt'
+
+dataset = 'shakespeare_char'
+block_size = 256 # context of up to 256 previous characters
+gradient_accumulation_steps = 4 # 1 gpu: 1 # 1 node: 4 # 2 nodes: 8
+batch_size = 16 # 1 gpu: 64 # 1 node: 16 # 2 nodes: 8
+
+# baby GPT model :)
+n_layer = 48
+n_head = 32 # to make it balance with tp
+n_embd = 2048
+dropout = 0.2
+
+learning_rate = 1e-4 # with baby networks can afford to go a bit higher # 1e-3 initially
+max_iters = 5000
+lr_decay_iters = 5000 # make equal to max_iters usually
+min_lr = 1e-5 # learning_rate / 10 usually
+beta2 = 0.99 # make a bit bigger because number of tokens per iter is small
+
+warmup_iters = 100 # not super necessary potentially
+
+# on macbook also add
+# device = 'cpu'  # run on cpu only
+# compile = False # do not torch compile the model
+
+model_parallel = 4
+tensor_parallel = 4
+
+tokens per iteration will be: 16,384
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 2416.25M
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+using fused AdamW: True
+compiling the model... (takes a ~minute)
+[RunLogger] Model params: 2,416,775,168 (2416.78 M), weights ~ 9.003 GB, full train state ~ 36.013 GB (theoretical)
+step 0: train loss 4.5928, val loss 4.5904
+iter 0: loss 4.6165, time 129066.95ms, mfu -100.00%
+Traceback (most recent call last):
+  File "/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py", line 376, in <module>
+    logits, loss = model(X, Y)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 465, in _fn
+    return fn(*args, **kwargs)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/pscratch/sd/e/es_lh/nanoGPT/DP/model.py", line 174, in forward
+    def forward(self, idx, targets=None):
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 632, in _fn
+    return fn(*args, **kwargs)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_functorch/aot_autograd.py", line 1100, in forward
+    return compiled_fn(full_args)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 308, in runtime_wrapper
+    all_outs = call_func_at_runtime_with_args(
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_functorch/_aot_autograd/utils.py", line 124, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_functorch/_aot_autograd/utils.py", line 98, in g
+    return f(*args)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 1525, in forward
+    fw_outs = call_func_at_runtime_with_args(
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_functorch/_aot_autograd/utils.py", line 124, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 488, in wrapper
+    return compiled_fn(runtime_args)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 667, in inner_fn
+    outs = compiled_fn(args)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_inductor/codecache.py", line 1478, in __call__
+    return self.current_callable(inputs)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_inductor/utils.py", line 1977, in run
+    return model(new_inputs)
+  File "/tmp/torchinductor_es_lh/64/c64rpqp56h3jwj3rt2jy3ug65su2gquffp5g363wsfx2kc2bswr7.py", line 3539, in call
+    buf843 = empty_strided_cuda((16, 256, 8192), (2097152, 8192, 1), torch.bfloat16)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 0 has a total capacity of 39.38 GiB of which 18.12 MiB is free. Including non-PyTorch memory, this process has 39.35 GiB memory in use. Of the allocated memory 38.76 GiB is allocated by PyTorch, and 89.20 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

@@ -1,0 +1,608 @@
+***************************************************************************
+                          NOTICE TO USERS
+
+Lawrence Berkeley National Laboratory operates this computer system under 
+contract to the U.S. Department of Energy.  This computer system is the 
+property of the United States Government and is for authorized use only.
+Users (authorized or unauthorized) have no explicit or implicit 
+expectation of privacy.
+
+Any or all uses of this system and all files on this system may be
+intercepted, monitored, recorded, copied, audited, inspected, and disclosed
+to authorized site, Department of Energy, and law enforcement personnel,
+as well as authorized officials of other agencies, both domestic and foreign.
+By using this system, the user consents to such interception, monitoring,
+recording, copying, auditing, inspection, and disclosure at the discretion
+of authorized site or Department of Energy personnel.
+
+Unauthorized or improper use of this system may result in administrative
+disciplinary action and civil and criminal penalties. By continuing to use
+this system you indicate your awareness of and consent to these terms and
+conditions of use. LOG OFF IMMEDIATELY if you do not agree to the conditions
+stated in this warning.
+
+*****************************************************************************
+
+Login connection to host x1000c3s4b0n0:
+
+[2025-12-11 15:27:03,984] [INFO] [runner.py:515:main] Using IP address of 10.100.0.138 for node nid001112
+[2025-12-11 15:27:03,984] [INFO] [runner.py:630:main] cmd = /pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python -u -m deepspeed.launcher.launch --world_info=eyJuaWQwMDExMTIiOiBbMCwgMSwgMiwgM119 --master_addr=10.100.0.138 --master_port=29500 --enable_each_rank_log=None --log_level=info train_ds_logger.py --wandb_log True
+[2025-12-11 15:27:10,934] [INFO] [launch.py:155:main] 0 NCCL_NET_GDR_LEVEL=PHB
+[2025-12-11 15:27:10,934] [INFO] [launch.py:155:main] 0 NCCL_SOCKET_IFNAME=hsn
+[2025-12-11 15:27:10,934] [INFO] [launch.py:162:main] WORLD INFO DICT: {'nid001112': [0, 1, 2, 3]}
+[2025-12-11 15:27:10,934] [INFO] [launch.py:168:main] nnodes=1, num_local_procs=4, node_rank=0
+[2025-12-11 15:27:10,934] [INFO] [launch.py:179:main] global_rank_mapping=defaultdict(<class 'list'>, {'nid001112': [0, 1, 2, 3]})
+[2025-12-11 15:27:10,934] [INFO] [launch.py:180:main] dist_world_size=4
+[2025-12-11 15:27:10,934] [INFO] [launch.py:184:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3
+[2025-12-11 15:27:10,949] [INFO] [launch.py:272:main] process 225600 spawned with command: ['/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python', '-u', 'train_ds_logger.py', '--local_rank=0', '--wandb_log', 'True']
+[2025-12-11 15:27:10,964] [INFO] [launch.py:272:main] process 225601 spawned with command: ['/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python', '-u', 'train_ds_logger.py', '--local_rank=1', '--wandb_log', 'True']
+[2025-12-11 15:27:10,978] [INFO] [launch.py:272:main] process 225602 spawned with command: ['/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python', '-u', 'train_ds_logger.py', '--local_rank=2', '--wandb_log', 'True']
+[2025-12-11 15:27:10,993] [INFO] [launch.py:272:main] process 225603 spawned with command: ['/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python', '-u', 'train_ds_logger.py', '--local_rank=3', '--wandb_log', 'True']
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 18.91M
+num decayed parameter tensors: 26, with 19,038,720 parameters
+num non-decayed parameter tensors: 13, with 6,656 parameters
+using fused AdamW: True
+number of parameters: 18.91M
+num decayed parameter tensors: 26, with 19,038,720 parameters
+num non-decayed parameter tensors: 13, with 6,656 parameters
+using fused AdamW: True
+number of parameters: 18.91M
+num decayed parameter tensors: 26, with 19,038,720 parameters
+num non-decayed parameter tensors: 13, with 6,656 parameters
+using fused AdamW: True
+number of parameters: 18.91M
+num decayed parameter tensors: 26, with 19,038,720 parameters
+num non-decayed parameter tensors: 13, with 6,656 parameters
+using fused AdamW: True
+[RunLogger] Model params: 19,045,376 (19.05 M), weights ~ 0.071 GB, full train state ~ 0.284 GB (theoretical)
+[2025-12-11 15:27:24,369] [WARNING] [torch_autocast.py:124:autocast_if_enabled] torch.autocast is enabled outside DeepSpeed but disabled within the DeepSpeed engine. If you are using DeepSpeed's built-in mixed precision, the engine will follow the settings in bf16/fp16 section. To use torch's native autocast instead, configure the `torch_autocast` section in the DeepSpeed config.
+step 0: train loss 4.3543, val loss 4.3563
+iter 0: loss 4.3438, time 1905.35ms, mfu -100.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8598.9, gpu_util 89.2%
+iter 10: loss 3.3966, time 14.22ms, mfu 11.35%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1152450.6, gpu_util 78.5%
+iter 20: loss 3.2309, time 13.15ms, mfu 11.44%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245956.4, gpu_util 60.0%
+iter 30: loss 3.2135, time 13.04ms, mfu 11.54%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1256343.5, gpu_util 87.2%
+iter 40: loss 3.0009, time 13.08ms, mfu 11.62%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252816.2, gpu_util 89.2%
+iter 50: loss 2.9087, time 13.15ms, mfu 11.68%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245549.9, gpu_util 89.2%
+iter 60: loss 2.8079, time 13.15ms, mfu 11.74%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246069.3, gpu_util 89.2%
+iter 70: loss 2.7813, time 13.18ms, mfu 11.79%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243026.5, gpu_util 89.2%
+iter 80: loss 2.7006, time 13.12ms, mfu 11.84%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248990.9, gpu_util 89.2%
+iter 90: loss 2.7166, time 13.13ms, mfu 11.89%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247879.5, gpu_util 89.0%
+iter 100: loss 2.6758, time 13.12ms, mfu 11.93%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249240.6, gpu_util 89.2%
+iter 110: loss 2.6314, time 13.08ms, mfu 11.97%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252770.6, gpu_util 89.2%
+iter 120: loss 2.6341, time 13.27ms, mfu 11.99%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1234873.5, gpu_util 89.0%
+iter 130: loss 2.6196, time 13.25ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1236873.9, gpu_util 89.0%
+iter 140: loss 2.6045, time 13.11ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249831.3, gpu_util 88.5%
+iter 150: loss 2.6125, time 13.15ms, mfu 12.06%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246295.3, gpu_util 89.0%
+iter 160: loss 2.5644, time 13.16ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244985.7, gpu_util 88.8%
+iter 170: loss 2.6192, time 13.10ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250695.7, gpu_util 89.2%
+iter 180: loss 2.5741, time 13.10ms, mfu 12.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250286.1, gpu_util 89.0%
+iter 190: loss 2.6034, time 13.14ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246430.9, gpu_util 89.0%
+iter 200: loss 2.5340, time 13.11ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249331.5, gpu_util 89.2%
+iter 210: loss 2.5472, time 13.15ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246137.1, gpu_util 89.2%
+iter 220: loss 2.5648, time 15.25ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1074043.9, gpu_util 89.2%
+iter 230: loss 2.5546, time 13.25ms, mfu 12.03%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1236495.6, gpu_util 89.0%
+iter 240: loss 2.5409, time 13.10ms, mfu 12.06%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250968.9, gpu_util 89.2%
+step 250: train loss 2.5093, val loss 2.5180
+saving checkpoint to out-shakespeare-char
+iter 250: loss 2.5381, time 2379.51ms, mfu 10.86%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 6885.4, gpu_util 75.8%
+iter 260: loss 2.5187, time 13.17ms, mfu 11.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243971.6, gpu_util 74.5%
+iter 270: loss 2.5541, time 13.13ms, mfu 11.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247924.8, gpu_util 89.2%
+iter 280: loss 2.5437, time 13.16ms, mfu 11.24%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245414.4, gpu_util 85.0%
+iter 290: loss 2.5341, time 13.33ms, mfu 11.33%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1229108.9, gpu_util 89.0%
+iter 300: loss 2.5147, time 13.11ms, mfu 11.43%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249581.3, gpu_util 89.2%
+iter 310: loss 2.4955, time 13.06ms, mfu 11.52%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254875.2, gpu_util 89.0%
+iter 320: loss 2.5004, time 13.08ms, mfu 11.60%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252154.2, gpu_util 89.0%
+iter 330: loss 2.5206, time 13.11ms, mfu 11.67%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249854.1, gpu_util 89.0%
+iter 340: loss 2.4927, time 13.56ms, mfu 11.69%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1208424.5, gpu_util 89.5%
+iter 350: loss 2.5054, time 13.12ms, mfu 11.76%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249104.4, gpu_util 89.5%
+iter 360: loss 2.5199, time 13.19ms, mfu 11.80%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1242532.0, gpu_util 89.2%
+iter 370: loss 2.5206, time 13.12ms, mfu 11.85%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248673.1, gpu_util 89.2%
+iter 380: loss 2.5225, time 13.11ms, mfu 11.90%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249763.2, gpu_util 89.2%
+iter 390: loss 2.5122, time 13.13ms, mfu 11.94%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247743.6, gpu_util 89.5%
+iter 400: loss 2.4920, time 13.09ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251743.7, gpu_util 89.2%
+iter 410: loss 2.5266, time 13.17ms, mfu 12.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244151.7, gpu_util 89.2%
+iter 420: loss 2.4608, time 13.10ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250263.4, gpu_util 89.2%
+iter 430: loss 2.5022, time 13.08ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252199.9, gpu_util 89.0%
+iter 440: loss 2.5187, time 13.08ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252473.7, gpu_util 89.0%
+iter 450: loss 2.5211, time 13.03ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1257769.2, gpu_util 89.8%
+iter 460: loss 2.4894, time 13.06ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254623.2, gpu_util 89.8%
+iter 470: loss 2.5103, time 13.10ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250900.6, gpu_util 89.5%
+iter 480: loss 2.5162, time 13.24ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1237765.0, gpu_util 89.0%
+iter 490: loss 2.4923, time 13.20ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1241252.8, gpu_util 89.2%
+step 500: train loss 2.4588, val loss 2.4771
+saving checkpoint to out-shakespeare-char
+iter 500: loss 2.5037, time 1900.16ms, mfu 10.96%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8622.4, gpu_util 84.0%
+iter 510: loss 2.4942, time 13.13ms, mfu 11.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247675.6, gpu_util 81.8%
+iter 520: loss 2.4799, time 13.10ms, mfu 11.22%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250308.9, gpu_util 79.0%
+iter 530: loss 2.4953, time 13.09ms, mfu 11.33%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251287.8, gpu_util 89.0%
+iter 540: loss 2.4502, time 13.09ms, mfu 11.43%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251903.3, gpu_util 89.0%
+iter 550: loss 2.4876, time 13.03ms, mfu 11.52%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1257055.9, gpu_util 89.2%
+iter 560: loss 2.4431, time 13.08ms, mfu 11.61%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252587.9, gpu_util 89.8%
+iter 570: loss 2.4882, time 13.14ms, mfu 11.67%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246589.2, gpu_util 89.5%
+iter 580: loss 2.4793, time 13.10ms, mfu 11.74%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251037.3, gpu_util 89.0%
+iter 590: loss 2.4700, time 13.08ms, mfu 11.80%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252724.9, gpu_util 89.0%
+iter 600: loss 2.4803, time 13.21ms, mfu 11.84%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1240446.2, gpu_util 89.2%
+iter 610: loss 2.4666, time 13.12ms, mfu 11.89%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248968.2, gpu_util 89.2%
+iter 620: loss 2.5063, time 13.10ms, mfu 11.93%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251014.5, gpu_util 89.8%
+iter 630: loss 2.4710, time 13.09ms, mfu 11.97%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251424.6, gpu_util 89.2%
+iter 640: loss 2.4423, time 13.09ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252017.4, gpu_util 89.0%
+iter 650: loss 2.4700, time 13.06ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254371.3, gpu_util 89.0%
+iter 660: loss 2.4765, time 13.12ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249195.2, gpu_util 89.0%
+iter 670: loss 2.4607, time 13.07ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253296.1, gpu_util 89.5%
+iter 680: loss 2.4627, time 13.11ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249331.5, gpu_util 89.2%
+iter 690: loss 2.4519, time 13.11ms, mfu 12.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249263.3, gpu_util 89.0%
+iter 700: loss 2.4531, time 13.03ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1257101.9, gpu_util 89.0%
+iter 710: loss 2.4537, time 13.08ms, mfu 12.18%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252747.7, gpu_util 89.0%
+iter 720: loss 2.4528, time 13.07ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253570.4, gpu_util 89.0%
+iter 730: loss 2.4519, time 13.13ms, mfu 12.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248038.2, gpu_util 89.0%
+iter 740: loss 2.4565, time 13.04ms, mfu 12.22%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255999.1, gpu_util 89.5%
+step 750: train loss 2.4352, val loss 2.4608
+saving checkpoint to out-shakespeare-char
+iter 750: loss 2.4686, time 1902.01ms, mfu 11.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8614.0, gpu_util 90.0%
+iter 760: loss 2.4381, time 13.10ms, mfu 11.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250991.7, gpu_util 76.5%
+iter 770: loss 2.4627, time 13.13ms, mfu 11.25%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247992.8, gpu_util 72.2%
+iter 780: loss 2.4584, time 13.16ms, mfu 11.35%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244512.2, gpu_util 89.5%
+iter 790: loss 2.4445, time 13.13ms, mfu 11.45%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247539.7, gpu_util 89.5%
+iter 800: loss 2.4330, time 13.09ms, mfu 11.54%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251173.9, gpu_util 89.0%
+iter 810: loss 2.4044, time 13.11ms, mfu 11.61%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250149.7, gpu_util 89.2%
+iter 820: loss 2.4403, time 13.21ms, mfu 11.67%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1240132.8, gpu_util 89.0%
+iter 830: loss 2.4747, time 13.10ms, mfu 11.74%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251128.4, gpu_util 89.2%
+iter 840: loss 2.4803, time 13.17ms, mfu 11.79%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243949.0, gpu_util 89.5%
+iter 850: loss 2.4438, time 13.17ms, mfu 11.84%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244399.6, gpu_util 89.2%
+iter 860: loss 2.4284, time 13.09ms, mfu 11.89%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251173.9, gpu_util 89.2%
+iter 870: loss 2.4704, time 13.20ms, mfu 11.92%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1241566.7, gpu_util 89.0%
+iter 880: loss 2.4311, time 13.10ms, mfu 11.96%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250695.7, gpu_util 89.2%
+iter 890: loss 2.4699, time 13.21ms, mfu 11.99%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1240446.2, gpu_util 89.2%
+iter 900: loss 2.4560, time 13.08ms, mfu 12.02%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252336.8, gpu_util 89.2%
+iter 910: loss 2.3939, time 13.17ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243791.4, gpu_util 89.2%
+iter 920: loss 2.4172, time 13.14ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247245.3, gpu_util 89.0%
+iter 930: loss 2.4196, time 13.27ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1234230.3, gpu_util 89.0%
+iter 940: loss 2.3915, time 12.99ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1261347.6, gpu_util 89.0%
+iter 950: loss 2.4271, time 13.13ms, mfu 12.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247585.0, gpu_util 89.8%
+iter 960: loss 2.3922, time 13.16ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245324.1, gpu_util 89.8%
+iter 970: loss 2.4297, time 13.02ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1258091.6, gpu_util 89.2%
+iter 980: loss 2.4621, time 13.05ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255264.9, gpu_util 89.2%
+iter 990: loss 2.4337, time 13.03ms, mfu 12.21%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1257585.0, gpu_util 89.0%
+step 1000: train loss 2.3924, val loss 2.4088
+saving checkpoint to out-shakespeare-char
+iter 1000: loss 2.4492, time 1894.57ms, mfu 10.99%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8647.9, gpu_util 94.5%
+iter 1010: loss 2.4032, time 13.10ms, mfu 11.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250399.9, gpu_util 76.0%
+iter 1020: loss 2.3891, time 13.10ms, mfu 11.25%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250877.9, gpu_util 88.0%
+iter 1030: loss 2.4215, time 13.50ms, mfu 11.32%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1213739.0, gpu_util 89.5%
+iter 1040: loss 2.4515, time 13.10ms, mfu 11.42%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250377.1, gpu_util 88.8%
+iter 1050: loss 2.4576, time 13.12ms, mfu 11.51%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248446.3, gpu_util 89.0%
+iter 1060: loss 2.4028, time 13.11ms, mfu 11.59%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250172.4, gpu_util 89.2%
+iter 1070: loss 2.3650, time 13.17ms, mfu 11.65%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243611.4, gpu_util 89.0%
+iter 1080: loss 2.4121, time 13.05ms, mfu 11.72%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255196.1, gpu_util 89.5%
+iter 1090: loss 2.4014, time 13.10ms, mfu 11.78%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250855.1, gpu_util 89.5%
+iter 1100: loss 2.4022, time 13.11ms, mfu 11.84%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249558.6, gpu_util 89.5%
+iter 1110: loss 2.3765, time 13.11ms, mfu 11.88%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249354.2, gpu_util 89.0%
+iter 1120: loss 2.3659, time 13.09ms, mfu 11.93%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252108.6, gpu_util 89.2%
+iter 1130: loss 2.4050, time 13.28ms, mfu 11.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1233277.9, gpu_util 89.5%
+iter 1140: loss 2.3817, time 13.11ms, mfu 11.99%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249490.5, gpu_util 89.2%
+iter 1150: loss 2.3690, time 13.12ms, mfu 12.02%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249240.6, gpu_util 89.0%
+iter 1160: loss 2.3873, time 13.11ms, mfu 12.05%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249831.3, gpu_util 89.5%
+iter 1170: loss 2.4096, time 13.13ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248287.5, gpu_util 89.5%
+iter 1180: loss 2.3634, time 13.12ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248469.0, gpu_util 89.5%
+iter 1190: loss 2.4080, time 13.30ms, mfu 12.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1231818.8, gpu_util 89.2%
+iter 1200: loss 2.4147, time 13.09ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251515.7, gpu_util 89.2%
+iter 1210: loss 2.3812, time 13.10ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250559.2, gpu_util 89.0%
+iter 1220: loss 2.3564, time 13.13ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247811.5, gpu_util 89.2%
+iter 1230: loss 2.3705, time 13.25ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1236829.4, gpu_util 89.2%
+iter 1240: loss 2.3701, time 13.10ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251105.6, gpu_util 89.2%
+step 1250: train loss 2.3111, val loss 2.3368
+saving checkpoint to out-shakespeare-char
+iter 1250: loss 2.3402, time 1897.18ms, mfu 10.97%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8636.0, gpu_util 81.8%
+iter 1260: loss 2.3781, time 13.14ms, mfu 11.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247132.2, gpu_util 85.5%
+iter 1270: loss 2.3914, time 13.09ms, mfu 11.22%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251994.5, gpu_util 81.5%
+iter 1280: loss 2.3385, time 13.08ms, mfu 11.33%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252565.1, gpu_util 90.8%
+iter 1290: loss 2.3634, time 13.11ms, mfu 11.43%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249695.0, gpu_util 89.0%
+iter 1300: loss 2.3009, time 13.14ms, mfu 11.52%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247177.4, gpu_util 89.5%
+iter 1310: loss 2.3507, time 13.13ms, mfu 11.59%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247970.2, gpu_util 89.2%
+iter 1320: loss 2.3638, time 13.07ms, mfu 11.67%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253959.3, gpu_util 89.0%
+iter 1330: loss 2.3409, time 13.40ms, mfu 11.71%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1222636.0, gpu_util 89.2%
+iter 1340: loss 2.3299, time 13.18ms, mfu 11.76%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243071.5, gpu_util 89.5%
+iter 1350: loss 2.3180, time 13.14ms, mfu 11.81%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246770.1, gpu_util 89.2%
+iter 1360: loss 2.3516, time 13.46ms, mfu 11.83%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1217394.4, gpu_util 89.5%
+iter 1370: loss 2.3344, time 13.12ms, mfu 11.88%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248945.5, gpu_util 89.2%
+iter 1380: loss 2.2934, time 13.06ms, mfu 11.92%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254073.7, gpu_util 89.0%
+iter 1390: loss 2.3327, time 13.13ms, mfu 11.96%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247743.6, gpu_util 89.2%
+iter 1400: loss 2.3471, time 13.04ms, mfu 12.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1256205.7, gpu_util 89.0%
+iter 1410: loss 2.3169, time 13.04ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1256113.9, gpu_util 89.5%
+iter 1420: loss 2.2936, time 13.08ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252770.6, gpu_util 89.8%
+iter 1430: loss 2.3462, time 13.13ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247992.8, gpu_util 89.0%
+iter 1440: loss 2.3223, time 13.08ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252245.5, gpu_util 89.5%
+iter 1450: loss 2.3309, time 13.11ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249967.7, gpu_util 89.5%
+iter 1460: loss 2.3285, time 13.07ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253982.2, gpu_util 89.2%
+iter 1470: loss 2.2913, time 13.15ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246024.1, gpu_util 89.5%
+iter 1480: loss 2.3204, time 13.06ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254944.0, gpu_util 89.0%
+iter 1490: loss 2.3236, time 13.09ms, mfu 12.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251903.3, gpu_util 89.2%
+step 1500: train loss 2.2304, val loss 2.2612
+saving checkpoint to out-shakespeare-char
+iter 1500: loss 2.3267, time 1893.52ms, mfu 10.99%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8652.7, gpu_util 87.0%
+iter 1510: loss 2.2721, time 13.14ms, mfu 11.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247177.4, gpu_util 84.2%
+iter 1520: loss 2.3172, time 13.08ms, mfu 11.24%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252268.3, gpu_util 91.8%
+iter 1530: loss 2.2948, time 13.10ms, mfu 11.35%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250627.4, gpu_util 89.2%
+iter 1540: loss 2.2885, time 13.16ms, mfu 11.44%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245211.3, gpu_util 89.2%
+iter 1550: loss 2.3043, time 13.08ms, mfu 11.53%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252473.7, gpu_util 89.2%
+iter 1560: loss 2.2962, time 13.12ms, mfu 11.61%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248922.8, gpu_util 89.2%
+iter 1570: loss 2.2613, time 13.13ms, mfu 11.68%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247811.5, gpu_util 89.2%
+iter 1580: loss 2.3406, time 12.99ms, mfu 11.75%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1261069.8, gpu_util 89.5%
+iter 1590: loss 2.2678, time 13.05ms, mfu 11.81%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255219.0, gpu_util 89.5%
+iter 1600: loss 2.3013, time 13.14ms, mfu 11.86%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246589.2, gpu_util 89.2%
+iter 1610: loss 2.2645, time 13.08ms, mfu 11.91%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252199.9, gpu_util 89.0%
+iter 1620: loss 2.2894, time 13.50ms, mfu 11.91%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1213503.3, gpu_util 89.2%
+iter 1630: loss 2.2617, time 13.39ms, mfu 11.92%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1224051.5, gpu_util 89.2%
+iter 1640: loss 2.2893, time 13.11ms, mfu 11.96%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250058.7, gpu_util 89.5%
+iter 1650: loss 2.2339, time 13.11ms, mfu 12.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250081.4, gpu_util 89.5%
+iter 1660: loss 2.2487, time 13.12ms, mfu 12.03%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248355.6, gpu_util 89.2%
+iter 1670: loss 2.2463, time 13.10ms, mfu 12.06%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250490.9, gpu_util 89.2%
+iter 1680: loss 2.2558, time 13.07ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253387.5, gpu_util 89.0%
+iter 1690: loss 2.2619, time 13.05ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255012.7, gpu_util 89.2%
+iter 1700: loss 2.2543, time 13.09ms, mfu 12.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251584.1, gpu_util 89.5%
+iter 1710: loss 2.2743, time 13.10ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251151.1, gpu_util 89.8%
+iter 1720: loss 2.2410, time 13.15ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245685.3, gpu_util 88.8%
+iter 1730: loss 2.2564, time 13.16ms, mfu 12.18%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245369.3, gpu_util 89.2%
+iter 1740: loss 2.2413, time 13.42ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1220638.0, gpu_util 89.5%
+step 1750: train loss 2.1655, val loss 2.2163
+saving checkpoint to out-shakespeare-char
+iter 1750: loss 2.2636, time 1890.82ms, mfu 10.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8665.0, gpu_util 92.5%
+iter 1760: loss 2.2130, time 13.17ms, mfu 11.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244129.2, gpu_util 74.8%
+iter 1770: loss 2.2712, time 13.14ms, mfu 11.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246928.5, gpu_util 91.8%
+iter 1780: loss 2.2332, time 13.10ms, mfu 11.31%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250741.3, gpu_util 89.2%
+iter 1790: loss 2.2537, time 13.06ms, mfu 11.42%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254669.0, gpu_util 89.5%
+iter 1800: loss 2.1979, time 13.16ms, mfu 11.50%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244760.2, gpu_util 89.2%
+iter 1810: loss 2.2669, time 13.10ms, mfu 11.58%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250581.9, gpu_util 89.0%
+iter 1820: loss 2.2145, time 13.27ms, mfu 11.64%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1235006.7, gpu_util 89.5%
+iter 1830: loss 2.1880, time 13.09ms, mfu 11.71%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251698.1, gpu_util 89.5%
+iter 1840: loss 2.1932, time 13.10ms, mfu 11.77%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250217.9, gpu_util 89.2%
+iter 1850: loss 2.2534, time 13.16ms, mfu 11.82%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244647.5, gpu_util 88.8%
+iter 1860: loss 2.2140, time 13.09ms, mfu 11.87%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251470.1, gpu_util 89.2%
+iter 1870: loss 2.2083, time 13.47ms, mfu 11.88%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1215972.6, gpu_util 89.8%
+iter 1880: loss 2.2350, time 13.21ms, mfu 11.91%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1240020.9, gpu_util 89.2%
+iter 1890: loss 2.2161, time 13.09ms, mfu 11.96%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252108.6, gpu_util 89.0%
+iter 1900: loss 2.2358, time 13.06ms, mfu 12.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254966.9, gpu_util 89.2%
+iter 1910: loss 2.2143, time 13.08ms, mfu 12.03%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252291.1, gpu_util 89.2%
+iter 1920: loss 2.1847, time 13.10ms, mfu 12.06%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250513.7, gpu_util 89.0%
+iter 1930: loss 2.2444, time 13.15ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245798.2, gpu_util 89.5%
+iter 1940: loss 2.2090, time 13.09ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252063.0, gpu_util 89.5%
+iter 1950: loss 2.2135, time 13.10ms, mfu 12.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251105.6, gpu_util 89.5%
+iter 1960: loss 2.2277, time 13.09ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251287.8, gpu_util 89.2%
+iter 1970: loss 2.1890, time 13.23ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1238300.3, gpu_util 89.0%
+iter 1980: loss 2.1788, time 13.27ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1234341.2, gpu_util 89.5%
+iter 1990: loss 2.1476, time 13.14ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246838.0, gpu_util 89.2%
+step 2000: train loss 2.0990, val loss 2.1526
+saving checkpoint to out-shakespeare-char
+iter 2000: loss 2.1709, time 1903.43ms, mfu 10.96%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8607.6, gpu_util 94.5%
+iter 2010: loss 2.1951, time 13.17ms, mfu 11.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243768.9, gpu_util 88.5%
+iter 2020: loss 2.2115, time 13.11ms, mfu 11.21%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249331.5, gpu_util 83.5%
+iter 2030: loss 2.2210, time 13.12ms, mfu 11.32%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248650.4, gpu_util 89.2%
+iter 2040: loss 2.1467, time 13.20ms, mfu 11.41%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1241320.0, gpu_util 89.5%
+iter 2050: loss 2.2037, time 13.17ms, mfu 11.49%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243633.9, gpu_util 89.5%
+iter 2060: loss 2.2208, time 13.32ms, mfu 11.55%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1230165.0, gpu_util 89.0%
+iter 2070: loss 2.1886, time 13.45ms, mfu 11.60%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1217869.0, gpu_util 89.0%
+iter 2080: loss 2.1692, time 13.13ms, mfu 11.67%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247970.2, gpu_util 89.5%
+iter 2090: loss 2.1602, time 13.09ms, mfu 11.73%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251287.8, gpu_util 89.5%
+iter 2100: loss 2.1826, time 13.10ms, mfu 11.79%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250263.4, gpu_util 89.5%
+iter 2110: loss 2.1277, time 13.11ms, mfu 11.84%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250149.7, gpu_util 89.0%
+iter 2120: loss 2.1666, time 13.11ms, mfu 11.89%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250036.0, gpu_util 89.2%
+iter 2130: loss 2.1519, time 13.13ms, mfu 11.93%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247675.6, gpu_util 89.2%
+iter 2140: loss 2.1267, time 13.13ms, mfu 11.97%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247630.3, gpu_util 89.5%
+iter 2150: loss 2.1761, time 13.33ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1229152.8, gpu_util 89.0%
+iter 2160: loss 2.1273, time 13.11ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249513.2, gpu_util 89.2%
+iter 2170: loss 2.1512, time 13.11ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249445.0, gpu_util 89.2%
+iter 2180: loss 2.1494, time 13.30ms, mfu 12.05%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1231598.1, gpu_util 89.0%
+iter 2190: loss 2.1847, time 13.12ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248605.1, gpu_util 89.2%
+iter 2200: loss 2.2369, time 13.21ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1240379.0, gpu_util 89.5%
+iter 2210: loss 2.1465, time 13.14ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247154.8, gpu_util 89.5%
+iter 2220: loss 2.1218, time 13.11ms, mfu 12.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249286.0, gpu_util 89.2%
+iter 2230: loss 2.1211, time 13.12ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248968.2, gpu_util 88.8%
+iter 2240: loss 2.1381, time 13.17ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243836.5, gpu_util 89.0%
+step 2250: train loss 2.0355, val loss 2.1120
+saving checkpoint to out-shakespeare-char
+iter 2250: loss 2.1119, time 1900.49ms, mfu 10.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8620.9, gpu_util 86.8%
+iter 2260: loss 2.1192, time 13.11ms, mfu 11.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249967.7, gpu_util 81.2%
+iter 2270: loss 2.1642, time 13.12ms, mfu 11.21%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249104.4, gpu_util 79.5%
+iter 2280: loss 2.0858, time 14.46ms, mfu 11.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1132807.1, gpu_util 89.0%
+iter 2290: loss 2.1112, time 13.15ms, mfu 11.31%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245595.0, gpu_util 89.2%
+iter 2300: loss 2.1087, time 13.12ms, mfu 11.41%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248968.2, gpu_util 89.5%
+iter 2310: loss 2.0847, time 13.10ms, mfu 11.50%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250263.4, gpu_util 89.0%
+iter 2320: loss 2.1099, time 13.16ms, mfu 11.58%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244692.6, gpu_util 89.2%
+iter 2330: loss 2.0722, time 13.06ms, mfu 11.65%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254623.2, gpu_util 88.8%
+iter 2340: loss 2.1249, time 13.09ms, mfu 11.72%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251196.7, gpu_util 89.0%
+iter 2350: loss 2.0815, time 13.14ms, mfu 11.78%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247335.9, gpu_util 89.5%
+iter 2360: loss 2.0771, time 13.03ms, mfu 11.84%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1257101.9, gpu_util 89.8%
+iter 2370: loss 2.1039, time 13.10ms, mfu 11.89%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250445.4, gpu_util 89.0%
+iter 2380: loss 2.1040, time 13.09ms, mfu 11.93%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251994.5, gpu_util 89.2%
+iter 2390: loss 2.1055, time 13.16ms, mfu 11.96%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245437.0, gpu_util 89.5%
+iter 2400: loss 2.0985, time 13.11ms, mfu 12.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249354.2, gpu_util 89.5%
+iter 2410: loss 2.1208, time 13.17ms, mfu 12.02%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243994.1, gpu_util 89.5%
+iter 2420: loss 2.0848, time 13.12ms, mfu 12.05%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248763.9, gpu_util 89.2%
+iter 2430: loss 2.0910, time 13.09ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251173.9, gpu_util 89.5%
+iter 2440: loss 2.1039, time 13.14ms, mfu 12.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246815.4, gpu_util 89.2%
+iter 2450: loss 2.0320, time 13.14ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246476.2, gpu_util 89.0%
+iter 2460: loss 2.1007, time 13.09ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251857.7, gpu_util 89.2%
+iter 2470: loss 2.0960, time 13.09ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251538.5, gpu_util 89.8%
+iter 2480: loss 2.0766, time 13.15ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245572.4, gpu_util 89.5%
+iter 2490: loss 2.1067, time 13.14ms, mfu 12.18%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247200.1, gpu_util 89.0%
+step 2500: train loss 1.9711, val loss 2.0564
+saving checkpoint to out-shakespeare-char
+iter 2500: loss 2.0923, time 1892.92ms, mfu 10.97%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8655.4, gpu_util 91.8%
+iter 2510: loss 2.0404, time 13.18ms, mfu 11.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1242869.1, gpu_util 74.8%
+iter 2520: loss 2.0771, time 13.12ms, mfu 11.22%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248423.6, gpu_util 90.8%
+iter 2530: loss 2.0795, time 13.12ms, mfu 11.33%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248469.0, gpu_util 89.0%
+iter 2540: loss 2.0466, time 13.12ms, mfu 11.42%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248832.0, gpu_util 89.5%
+iter 2550: loss 2.0268, time 13.20ms, mfu 11.50%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1241006.2, gpu_util 89.5%
+iter 2560: loss 2.0704, time 13.16ms, mfu 11.58%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244760.2, gpu_util 89.5%
+iter 2570: loss 2.0607, time 13.10ms, mfu 11.65%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250718.5, gpu_util 89.2%
+iter 2580: loss 2.0296, time 13.13ms, mfu 11.72%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248128.8, gpu_util 89.0%
+iter 2590: loss 2.0802, time 13.14ms, mfu 11.77%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247313.3, gpu_util 89.0%
+iter 2600: loss 2.0159, time 13.28ms, mfu 11.81%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1233410.7, gpu_util 89.2%
+iter 2610: loss 2.0741, time 13.11ms, mfu 11.86%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249604.1, gpu_util 89.2%
+iter 2620: loss 2.0477, time 13.02ms, mfu 11.91%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1258644.6, gpu_util 89.2%
+iter 2630: loss 2.0472, time 13.14ms, mfu 11.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247268.0, gpu_util 89.2%
+iter 2640: loss 1.9882, time 13.13ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247381.2, gpu_util 89.0%
+iter 2650: loss 2.0336, time 13.13ms, mfu 12.02%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247517.1, gpu_util 89.0%
+iter 2660: loss 2.0944, time 13.15ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245730.5, gpu_util 89.5%
+iter 2670: loss 2.0783, time 13.12ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249240.6, gpu_util 89.2%
+iter 2680: loss 2.0496, time 13.12ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248718.5, gpu_util 89.0%
+iter 2690: loss 2.0746, time 13.17ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244151.7, gpu_util 89.0%
+iter 2700: loss 2.0295, time 13.13ms, mfu 12.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248196.8, gpu_util 89.2%
+iter 2710: loss 2.0668, time 13.09ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251789.3, gpu_util 89.5%
+iter 2720: loss 2.0612, time 13.21ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1240356.6, gpu_util 89.8%
+iter 2730: loss 2.0641, time 13.10ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251082.8, gpu_util 89.2%
+iter 2740: loss 2.0409, time 13.18ms, mfu 12.18%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243341.4, gpu_util 89.2%
+step 2750: train loss 1.9267, val loss 2.0260
+saving checkpoint to out-shakespeare-char
+iter 2750: loss 2.0361, time 1894.80ms, mfu 10.97%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8646.8, gpu_util 78.0%
+iter 2760: loss 2.0303, time 13.13ms, mfu 11.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248083.5, gpu_util 76.2%
+iter 2770: loss 2.0102, time 13.16ms, mfu 11.22%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244557.3, gpu_util 87.8%
+iter 2780: loss 2.0365, time 14.04ms, mfu 11.24%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1167071.0, gpu_util 89.2%
+iter 2790: loss 2.0042, time 13.16ms, mfu 11.35%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244760.2, gpu_util 89.0%
+iter 2800: loss 2.0228, time 13.10ms, mfu 11.44%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250946.2, gpu_util 89.0%
+iter 2810: loss 2.0815, time 13.17ms, mfu 11.52%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243994.1, gpu_util 89.2%
+iter 2820: loss 2.0330, time 13.13ms, mfu 11.60%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247562.3, gpu_util 89.2%
+iter 2830: loss 1.9633, time 13.14ms, mfu 11.67%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247086.9, gpu_util 89.2%
+iter 2840: loss 2.0497, time 13.10ms, mfu 11.73%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250764.0, gpu_util 89.2%
+iter 2850: loss 2.0311, time 13.09ms, mfu 11.79%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251994.5, gpu_util 89.2%
+iter 2860: loss 2.0169, time 13.44ms, mfu 11.82%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1218862.7, gpu_util 89.2%
+iter 2870: loss 2.0209, time 13.12ms, mfu 11.86%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248968.2, gpu_util 89.5%
+iter 2880: loss 1.9610, time 13.13ms, mfu 11.91%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248264.9, gpu_util 89.5%
+iter 2890: loss 1.9406, time 13.12ms, mfu 11.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248854.7, gpu_util 89.5%
+iter 2900: loss 1.9660, time 13.15ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245798.2, gpu_util 89.2%
+iter 2910: loss 2.0034, time 13.10ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251060.0, gpu_util 89.2%
+iter 2920: loss 1.9543, time 13.11ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249467.7, gpu_util 89.2%
+iter 2930: loss 2.0182, time 13.12ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248310.2, gpu_util 89.2%
+iter 2940: loss 1.9917, time 13.17ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243588.9, gpu_util 89.0%
+iter 2950: loss 1.9704, time 13.72ms, mfu 12.05%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1194000.0, gpu_util 89.2%
+iter 2960: loss 1.9873, time 13.17ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243633.9, gpu_util 89.0%
+iter 2970: loss 2.0362, time 13.14ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247177.4, gpu_util 88.8%
+iter 2980: loss 1.9821, time 13.02ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1258275.8, gpu_util 89.0%
+iter 2990: loss 1.9926, time 13.12ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248332.9, gpu_util 89.2%
+step 3000: train loss 1.8902, val loss 1.9963
+saving checkpoint to out-shakespeare-char
+iter 3000: loss 2.0074, time 1893.95ms, mfu 10.94%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8650.7, gpu_util 83.0%
+iter 3010: loss 1.9524, time 13.39ms, mfu 11.05%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1223572.0, gpu_util 82.2%
+iter 3020: loss 2.0677, time 13.15ms, mfu 11.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245753.1, gpu_util 81.2%
+iter 3030: loss 2.0477, time 13.29ms, mfu 11.27%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1232680.6, gpu_util 90.0%
+iter 3040: loss 1.9755, time 13.10ms, mfu 11.37%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250786.8, gpu_util 89.2%
+iter 3050: loss 1.9844, time 13.09ms, mfu 11.47%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251470.1, gpu_util 89.0%
+iter 3060: loss 1.9363, time 13.14ms, mfu 11.55%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247335.9, gpu_util 88.8%
+iter 3070: loss 1.9691, time 13.23ms, mfu 11.61%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1238813.8, gpu_util 89.5%
+iter 3080: loss 1.9951, time 13.27ms, mfu 11.67%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1234829.1, gpu_util 89.2%
+iter 3090: loss 2.0020, time 13.16ms, mfu 11.73%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244557.3, gpu_util 89.2%
+iter 3100: loss 2.0001, time 13.17ms, mfu 11.78%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244332.0, gpu_util 89.0%
+iter 3110: loss 2.0498, time 13.14ms, mfu 11.83%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247109.5, gpu_util 89.0%
+iter 3120: loss 1.9623, time 13.13ms, mfu 11.88%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247539.7, gpu_util 89.0%
+iter 3130: loss 1.9934, time 13.29ms, mfu 11.90%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1232459.5, gpu_util 89.5%
+iter 3140: loss 2.0113, time 13.13ms, mfu 11.94%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247743.6, gpu_util 89.2%
+iter 3150: loss 1.9744, time 13.13ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247381.2, gpu_util 89.0%
+iter 3160: loss 2.0230, time 13.78ms, mfu 11.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1188918.3, gpu_util 89.0%
+iter 3170: loss 1.9374, time 13.17ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243881.5, gpu_util 89.0%
+iter 3180: loss 1.9641, time 13.09ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251356.2, gpu_util 89.0%
+iter 3190: loss 1.9608, time 13.20ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1240894.1, gpu_util 88.8%
+iter 3200: loss 1.9042, time 13.10ms, mfu 12.06%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250741.3, gpu_util 89.2%
+iter 3210: loss 1.9527, time 13.50ms, mfu 12.05%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1213289.0, gpu_util 89.2%
+iter 3220: loss 1.9573, time 13.25ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1236651.3, gpu_util 89.0%
+iter 3230: loss 1.9636, time 13.14ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246634.4, gpu_util 89.0%
+iter 3240: loss 1.8953, time 13.15ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245911.2, gpu_util 88.8%
+step 3250: train loss 1.8577, val loss 1.9734
+saving checkpoint to out-shakespeare-char
+iter 3250: loss 1.9672, time 1895.55ms, mfu 10.90%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8643.4, gpu_util 90.2%
+iter 3260: loss 1.9184, time 13.14ms, mfu 11.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247245.3, gpu_util 75.8%
+iter 3270: loss 2.0043, time 13.12ms, mfu 11.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248332.9, gpu_util 92.2%
+iter 3280: loss 1.9159, time 13.14ms, mfu 11.28%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247200.1, gpu_util 89.5%
+iter 3290: loss 1.9125, time 13.17ms, mfu 11.38%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244106.7, gpu_util 89.2%
+iter 3300: loss 1.9555, time 13.10ms, mfu 11.47%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250855.1, gpu_util 88.8%
+iter 3310: loss 1.9650, time 13.16ms, mfu 11.55%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244760.2, gpu_util 89.2%
+iter 3320: loss 1.8959, time 13.17ms, mfu 11.62%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243949.0, gpu_util 89.5%
+iter 3330: loss 1.9339, time 13.16ms, mfu 11.68%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244534.8, gpu_util 89.2%
+iter 3340: loss 1.9973, time 13.14ms, mfu 11.74%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246928.5, gpu_util 89.2%
+iter 3350: loss 1.9656, time 13.14ms, mfu 11.80%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247086.9, gpu_util 89.2%
+iter 3360: loss 2.0170, time 13.12ms, mfu 11.85%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249081.7, gpu_util 89.2%
+iter 3370: loss 1.9276, time 13.14ms, mfu 11.89%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246951.1, gpu_util 89.0%
+iter 3380: loss 1.9918, time 13.10ms, mfu 11.93%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250786.8, gpu_util 89.2%
+iter 3390: loss 1.9022, time 13.13ms, mfu 11.97%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247720.9, gpu_util 89.8%
+iter 3400: loss 1.9187, time 13.25ms, mfu 11.99%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1236451.1, gpu_util 89.5%
+iter 3410: loss 1.8997, time 13.11ms, mfu 12.02%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249399.6, gpu_util 89.0%
+iter 3420: loss 1.9581, time 13.11ms, mfu 12.05%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249331.5, gpu_util 89.0%
+iter 3430: loss 1.9167, time 13.12ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249195.2, gpu_util 89.0%
+iter 3440: loss 1.9312, time 13.14ms, mfu 12.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247335.9, gpu_util 89.2%
+iter 3450: loss 1.9392, time 13.31ms, mfu 12.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1230826.0, gpu_util 89.0%
+iter 3460: loss 1.9130, time 13.13ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247743.6, gpu_util 89.0%
+iter 3470: loss 1.9942, time 13.08ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252359.6, gpu_util 89.0%
+iter 3480: loss 1.9553, time 13.16ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1244827.9, gpu_util 89.2%
+iter 3490: loss 1.9828, time 13.16ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245346.7, gpu_util 89.0%
+step 3500: train loss 1.8281, val loss 1.9592
+saving checkpoint to out-shakespeare-char
+iter 3500: loss 1.8786, time 1898.27ms, mfu 10.96%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8631.0, gpu_util 94.8%
+iter 3510: loss 1.9371, time 13.09ms, mfu 11.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251470.1, gpu_util 74.8%
+iter 3520: loss 1.9107, time 13.12ms, mfu 11.21%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248741.2, gpu_util 86.0%
+iter 3530: loss 1.9533, time 13.19ms, mfu 11.32%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1241948.2, gpu_util 89.0%
+iter 3540: loss 1.9206, time 13.09ms, mfu 11.42%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251834.9, gpu_util 89.2%
+iter 3550: loss 1.9625, time 13.09ms, mfu 11.51%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251948.9, gpu_util 89.8%
+iter 3560: loss 1.9339, time 13.09ms, mfu 11.59%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251173.9, gpu_util 89.5%
+iter 3570: loss 1.9176, time 13.10ms, mfu 11.66%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250832.3, gpu_util 89.5%
+iter 3580: loss 1.9170, time 13.11ms, mfu 11.73%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249695.0, gpu_util 89.2%
+iter 3590: loss 1.9683, time 13.08ms, mfu 11.79%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252999.0, gpu_util 89.0%
+iter 3600: loss 1.9308, time 13.07ms, mfu 11.84%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253136.1, gpu_util 89.2%
+iter 3610: loss 1.9105, time 13.11ms, mfu 11.89%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249558.6, gpu_util 89.5%
+iter 3620: loss 1.9074, time 13.09ms, mfu 11.93%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251447.3, gpu_util 89.0%
+iter 3630: loss 1.9203, time 13.07ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253593.3, gpu_util 89.2%
+iter 3640: loss 1.9723, time 13.12ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248695.8, gpu_util 89.2%
+iter 3650: loss 1.9268, time 13.19ms, mfu 12.03%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1242487.1, gpu_util 89.2%
+iter 3660: loss 1.9047, time 13.11ms, mfu 12.06%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249286.0, gpu_util 89.0%
+iter 3670: loss 1.9247, time 13.12ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249104.4, gpu_util 89.2%
+iter 3680: loss 1.9331, time 13.09ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251196.7, gpu_util 89.0%
+iter 3690: loss 1.9282, time 13.13ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247562.3, gpu_util 89.2%
+iter 3700: loss 1.8817, time 13.06ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254600.3, gpu_util 89.0%
+iter 3710: loss 1.8606, time 13.13ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248264.9, gpu_util 89.0%
+iter 3720: loss 1.9491, time 13.15ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1245775.7, gpu_util 89.2%
+iter 3730: loss 1.9331, time 13.10ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250286.1, gpu_util 89.0%
+iter 3740: loss 1.8624, time 13.14ms, mfu 12.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246498.8, gpu_util 89.0%
+step 3750: train loss 1.8072, val loss 1.9437
+saving checkpoint to out-shakespeare-char
+iter 3750: loss 1.9116, time 1898.95ms, mfu 10.99%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8627.9, gpu_util 82.2%
+iter 3760: loss 1.9066, time 13.13ms, mfu 11.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247766.2, gpu_util 82.2%
+iter 3770: loss 1.9347, time 13.14ms, mfu 11.23%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246566.6, gpu_util 81.5%
+iter 3780: loss 1.9637, time 13.10ms, mfu 11.34%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250968.9, gpu_util 89.2%
+iter 3790: loss 1.8954, time 13.10ms, mfu 11.44%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250240.6, gpu_util 89.2%
+iter 3800: loss 1.8894, time 13.08ms, mfu 11.53%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252405.3, gpu_util 89.0%
+iter 3810: loss 1.8727, time 13.09ms, mfu 11.61%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251242.3, gpu_util 89.5%
+iter 3820: loss 1.8931, time 13.07ms, mfu 11.68%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253090.4, gpu_util 89.2%
+iter 3830: loss 1.9275, time 13.06ms, mfu 11.75%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254462.9, gpu_util 89.0%
+iter 3840: loss 1.8724, time 13.13ms, mfu 11.80%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248287.5, gpu_util 89.2%
+iter 3850: loss 1.8460, time 13.08ms, mfu 11.86%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252450.9, gpu_util 89.2%
+iter 3860: loss 1.9050, time 13.10ms, mfu 11.90%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250263.4, gpu_util 89.2%
+iter 3870: loss 1.8955, time 13.11ms, mfu 11.94%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249967.7, gpu_util 89.2%
+iter 3880: loss 1.8562, time 13.13ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247585.0, gpu_util 89.5%
+iter 3890: loss 1.9158, time 13.12ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248945.5, gpu_util 89.5%
+iter 3900: loss 1.9017, time 13.08ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252679.2, gpu_util 89.2%
+iter 3910: loss 1.9272, time 13.13ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247358.5, gpu_util 89.5%
+iter 3920: loss 1.8731, time 13.06ms, mfu 12.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254142.4, gpu_util 89.5%
+iter 3930: loss 1.9550, time 13.11ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249649.5, gpu_util 89.2%
+iter 3940: loss 1.9492, time 13.07ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253524.7, gpu_util 89.2%
+iter 3950: loss 1.9087, time 13.09ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251561.3, gpu_util 89.2%
+iter 3960: loss 1.8845, time 13.09ms, mfu 12.18%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252085.8, gpu_util 89.2%
+iter 3970: loss 1.8457, time 13.11ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250149.7, gpu_util 89.2%
+iter 3980: loss 1.8842, time 13.11ms, mfu 12.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249717.7, gpu_util 89.5%
+iter 3990: loss 1.8821, time 13.07ms, mfu 12.22%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254005.0, gpu_util 89.0%
+step 4000: train loss 1.7875, val loss 1.9244
+saving checkpoint to out-shakespeare-char
+iter 4000: loss 1.8912, time 1907.90ms, mfu 11.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8587.5, gpu_util 88.2%
+iter 4010: loss 1.9115, time 13.10ms, mfu 11.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250559.2, gpu_util 87.0%
+iter 4020: loss 1.8772, time 13.14ms, mfu 11.25%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247132.2, gpu_util 75.2%
+iter 4030: loss 1.8892, time 13.10ms, mfu 11.36%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250422.6, gpu_util 89.0%
+iter 4040: loss 1.8244, time 13.06ms, mfu 11.46%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254256.8, gpu_util 89.5%
+iter 4050: loss 1.8707, time 13.09ms, mfu 11.54%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251561.3, gpu_util 89.2%
+iter 4060: loss 1.8870, time 13.08ms, mfu 11.62%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252724.9, gpu_util 89.5%
+iter 4070: loss 1.8562, time 13.06ms, mfu 11.70%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254096.6, gpu_util 89.2%
+iter 4080: loss 1.8117, time 13.15ms, mfu 11.75%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246182.3, gpu_util 89.5%
+iter 4090: loss 1.8799, time 13.07ms, mfu 11.81%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253090.4, gpu_util 89.8%
+iter 4100: loss 1.9170, time 13.08ms, mfu 11.87%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252587.9, gpu_util 89.2%
+iter 4110: loss 1.8874, time 13.12ms, mfu 11.91%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248763.9, gpu_util 89.5%
+iter 4120: loss 1.8730, time 13.12ms, mfu 11.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249172.5, gpu_util 89.2%
+iter 4130: loss 1.9682, time 13.11ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249785.9, gpu_util 89.2%
+iter 4140: loss 1.8461, time 13.15ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246091.9, gpu_util 89.0%
+iter 4150: loss 1.9418, time 13.07ms, mfu 12.05%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253501.8, gpu_util 89.2%
+iter 4160: loss 1.8737, time 13.10ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250968.9, gpu_util 89.0%
+iter 4170: loss 1.8878, time 13.11ms, mfu 12.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249808.6, gpu_util 89.2%
+iter 4180: loss 1.9270, time 13.10ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250764.0, gpu_util 89.2%
+iter 4190: loss 1.8200, time 13.09ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251743.7, gpu_util 89.2%
+iter 4200: loss 1.9145, time 13.12ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248718.5, gpu_util 89.2%
+iter 4210: loss 1.8816, time 13.08ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252884.8, gpu_util 89.5%
+iter 4220: loss 1.8481, time 13.08ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252587.9, gpu_util 89.5%
+iter 4230: loss 1.8637, time 13.08ms, mfu 12.21%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252291.1, gpu_util 89.5%
+iter 4240: loss 1.8810, time 13.09ms, mfu 12.22%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251196.7, gpu_util 89.5%
+step 4250: train loss 1.7803, val loss 1.9269
+iter 4250: loss 1.8816, time 1681.24ms, mfu 11.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 9745.2, gpu_util 94.5%
+iter 4260: loss 1.8911, time 13.05ms, mfu 11.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255700.7, gpu_util 92.5%
+iter 4270: loss 1.9116, time 13.13ms, mfu 11.26%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247585.0, gpu_util 90.0%
+iter 4280: loss 1.8698, time 13.05ms, mfu 11.37%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255356.6, gpu_util 89.5%
+iter 4290: loss 1.8658, time 13.08ms, mfu 11.46%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252473.7, gpu_util 89.2%
+iter 4300: loss 1.9074, time 13.11ms, mfu 11.55%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250172.4, gpu_util 89.5%
+iter 4310: loss 1.8869, time 13.11ms, mfu 11.62%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249535.9, gpu_util 89.2%
+iter 4320: loss 1.9046, time 13.13ms, mfu 11.69%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247947.5, gpu_util 89.2%
+iter 4330: loss 1.8213, time 13.13ms, mfu 11.75%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248128.8, gpu_util 89.5%
+iter 4340: loss 1.8816, time 13.15ms, mfu 11.80%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246091.9, gpu_util 89.2%
+iter 4350: loss 1.8869, time 13.11ms, mfu 11.85%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250149.7, gpu_util 89.5%
+iter 4360: loss 1.8429, time 13.12ms, mfu 11.90%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248809.3, gpu_util 89.2%
+iter 4370: loss 1.8523, time 13.23ms, mfu 11.93%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1238233.4, gpu_util 89.5%
+iter 4380: loss 1.8421, time 13.08ms, mfu 11.97%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252222.7, gpu_util 90.0%
+iter 4390: loss 1.8922, time 13.10ms, mfu 12.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250559.2, gpu_util 89.5%
+iter 4400: loss 1.9405, time 13.09ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251470.1, gpu_util 89.5%
+iter 4410: loss 1.9008, time 13.12ms, mfu 12.06%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248491.6, gpu_util 89.2%
+iter 4420: loss 1.9757, time 13.14ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247154.8, gpu_util 89.2%
+iter 4430: loss 1.9033, time 13.05ms, mfu 12.11%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255196.1, gpu_util 89.2%
+iter 4440: loss 1.8079, time 13.10ms, mfu 12.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251037.3, gpu_util 89.0%
+iter 4450: loss 1.8595, time 13.09ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251356.2, gpu_util 89.0%
+iter 4460: loss 1.8376, time 13.05ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255471.3, gpu_util 89.2%
+iter 4470: loss 1.8802, time 13.07ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253227.5, gpu_util 89.2%
+iter 4480: loss 1.8725, time 13.11ms, mfu 12.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249263.3, gpu_util 89.2%
+iter 4490: loss 1.8577, time 13.07ms, mfu 12.22%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253250.4, gpu_util 89.5%
+step 4500: train loss 1.7688, val loss 1.9142
+saving checkpoint to out-shakespeare-char
+iter 4500: loss 1.9057, time 1900.78ms, mfu 11.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8619.6, gpu_util 78.0%
+iter 4510: loss 1.8859, time 13.13ms, mfu 11.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247652.9, gpu_util 77.5%
+iter 4520: loss 1.9048, time 13.08ms, mfu 11.25%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252861.9, gpu_util 85.2%
+iter 4530: loss 1.8831, time 13.08ms, mfu 11.36%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252131.4, gpu_util 90.2%
+iter 4540: loss 1.8532, time 13.06ms, mfu 11.46%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254211.0, gpu_util 89.0%
+iter 4550: loss 1.8327, time 13.06ms, mfu 11.55%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254119.5, gpu_util 89.2%
+iter 4560: loss 1.8467, time 13.10ms, mfu 11.63%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250308.9, gpu_util 89.0%
+iter 4570: loss 1.8848, time 13.12ms, mfu 11.69%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248378.2, gpu_util 89.5%
+iter 4580: loss 1.9091, time 13.13ms, mfu 11.75%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247607.6, gpu_util 89.5%
+iter 4590: loss 1.8757, time 13.09ms, mfu 11.81%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251561.3, gpu_util 89.2%
+iter 4600: loss 1.8767, time 13.14ms, mfu 11.86%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1246657.1, gpu_util 89.5%
+iter 4610: loss 1.9123, time 13.09ms, mfu 11.90%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251743.7, gpu_util 89.0%
+iter 4620: loss 1.8848, time 13.09ms, mfu 11.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252040.2, gpu_util 89.2%
+iter 4630: loss 1.8619, time 13.11ms, mfu 11.98%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249581.3, gpu_util 89.8%
+iter 4640: loss 1.8242, time 13.13ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248151.5, gpu_util 89.5%
+iter 4650: loss 1.8939, time 13.10ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250399.9, gpu_util 89.5%
+iter 4660: loss 1.8235, time 13.10ms, mfu 12.07%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250946.2, gpu_util 89.8%
+iter 4670: loss 1.8678, time 13.12ms, mfu 12.09%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248763.9, gpu_util 89.8%
+iter 4680: loss 1.9098, time 13.11ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249717.7, gpu_util 89.2%
+iter 4690: loss 1.8910, time 13.10ms, mfu 12.14%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250604.7, gpu_util 89.5%
+iter 4700: loss 1.8622, time 13.08ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252450.9, gpu_util 89.5%
+iter 4710: loss 1.9193, time 13.12ms, mfu 12.17%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249195.2, gpu_util 89.2%
+iter 4720: loss 1.9303, time 13.07ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254005.0, gpu_util 89.2%
+iter 4730: loss 1.8540, time 13.13ms, mfu 12.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247902.2, gpu_util 89.2%
+iter 4740: loss 1.8552, time 13.10ms, mfu 12.21%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250764.0, gpu_util 89.5%
+step 4750: train loss 1.7579, val loss 1.9067
+saving checkpoint to out-shakespeare-char
+iter 4750: loss 1.8789, time 1898.41ms, mfu 11.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8630.4, gpu_util 83.0%
+iter 4760: loss 1.8761, time 13.09ms, mfu 11.13%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252017.4, gpu_util 83.0%
+iter 4770: loss 1.9021, time 13.07ms, mfu 11.25%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253227.5, gpu_util 80.2%
+iter 4780: loss 1.9076, time 13.13ms, mfu 11.36%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247449.1, gpu_util 89.0%
+iter 4790: loss 1.8843, time 13.12ms, mfu 11.45%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248809.3, gpu_util 89.2%
+iter 4800: loss 1.8869, time 13.06ms, mfu 11.54%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254096.6, gpu_util 89.2%
+iter 4810: loss 1.8853, time 13.09ms, mfu 11.62%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251173.9, gpu_util 89.2%
+iter 4820: loss 1.8974, time 13.08ms, mfu 11.69%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252793.4, gpu_util 89.0%
+iter 4830: loss 1.8527, time 13.07ms, mfu 11.76%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253822.0, gpu_util 89.0%
+iter 4840: loss 1.8608, time 13.09ms, mfu 11.81%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1252108.6, gpu_util 89.2%
+iter 4850: loss 1.8896, time 13.13ms, mfu 11.86%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1247834.2, gpu_util 89.5%
+iter 4860: loss 1.8530, time 13.04ms, mfu 11.91%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1256228.7, gpu_util 89.8%
+iter 4870: loss 1.8997, time 13.13ms, mfu 11.95%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248151.5, gpu_util 89.2%
+iter 4880: loss 1.8545, time 13.09ms, mfu 11.99%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251720.9, gpu_util 89.5%
+iter 4890: loss 1.9189, time 13.21ms, mfu 12.01%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1240513.3, gpu_util 89.8%
+iter 4900: loss 1.8179, time 13.10ms, mfu 12.04%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1250490.9, gpu_util 89.2%
+iter 4910: loss 1.8625, time 13.05ms, mfu 12.08%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1255608.9, gpu_util 89.2%
+iter 4920: loss 1.8742, time 13.07ms, mfu 12.10%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253181.8, gpu_util 89.0%
+iter 4930: loss 1.8483, time 13.09ms, mfu 12.12%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1251789.3, gpu_util 89.5%
+iter 4940: loss 1.7855, time 13.07ms, mfu 12.15%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1253136.1, gpu_util 89.2%
+iter 4950: loss 1.8237, time 13.12ms, mfu 12.16%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249059.0, gpu_util 89.0%
+iter 4960: loss 1.8321, time 13.06ms, mfu 12.18%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1254646.1, gpu_util 89.5%
+iter 4970: loss 1.8574, time 13.12ms, mfu 12.19%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1248582.4, gpu_util 89.2%
+iter 4980: loss 1.8507, time 13.17ms, mfu 12.20%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1243746.4, gpu_util 89.2%
+iter 4990: loss 1.8760, time 13.11ms, mfu 12.21%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 1249649.5, gpu_util 89.5%
+step 5000: train loss 1.7457, val loss 1.8942
+saving checkpoint to out-shakespeare-char
+iter 5000: loss 1.8887, time 1900.43ms, mfu 11.00%, comm 0.0000s (0.0%), BW 0.00 GB/s, collectives 0, tokens/s 8621.2, gpu_util 88.0%
+[RunLogger] Summary written to /pscratch/sd/e/es_lh/nanoGPT/results.csv

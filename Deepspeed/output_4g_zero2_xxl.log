@@ -1,0 +1,144 @@
+***************************************************************************
+                          NOTICE TO USERS
+
+Lawrence Berkeley National Laboratory operates this computer system under 
+contract to the U.S. Department of Energy.  This computer system is the 
+property of the United States Government and is for authorized use only.
+Users (authorized or unauthorized) have no explicit or implicit 
+expectation of privacy.
+
+Any or all uses of this system and all files on this system may be
+intercepted, monitored, recorded, copied, audited, inspected, and disclosed
+to authorized site, Department of Energy, and law enforcement personnel,
+as well as authorized officials of other agencies, both domestic and foreign.
+By using this system, the user consents to such interception, monitoring,
+recording, copying, auditing, inspection, and disclosure at the discretion
+of authorized site or Department of Energy personnel.
+
+Unauthorized or improper use of this system may result in administrative
+disciplinary action and civil and criminal penalties. By continuing to use
+this system you indicate your awareness of and consent to these terms and
+conditions of use. LOG OFF IMMEDIATELY if you do not agree to the conditions
+stated in this warning.
+
+*****************************************************************************
+
+Login connection to host x1000c3s4b0n0:
+
+[2025-12-11 15:33:38,418] [INFO] [runner.py:515:main] Using IP address of 10.100.0.138 for node nid001112
+[2025-12-11 15:33:38,419] [INFO] [runner.py:630:main] cmd = /pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python -u -m deepspeed.launcher.launch --world_info=eyJuaWQwMDExMTIiOiBbMCwgMSwgMiwgM119 --master_addr=10.100.0.138 --master_port=29500 --enable_each_rank_log=None --log_level=info train_ds_logger.py --wandb_log True
+[2025-12-11 15:33:45,707] [INFO] [launch.py:155:main] 0 NCCL_NET_GDR_LEVEL=PHB
+[2025-12-11 15:33:45,707] [INFO] [launch.py:155:main] 0 NCCL_SOCKET_IFNAME=hsn
+[2025-12-11 15:33:45,707] [INFO] [launch.py:162:main] WORLD INFO DICT: {'nid001112': [0, 1, 2, 3]}
+[2025-12-11 15:33:45,707] [INFO] [launch.py:168:main] nnodes=1, num_local_procs=4, node_rank=0
+[2025-12-11 15:33:45,707] [INFO] [launch.py:179:main] global_rank_mapping=defaultdict(<class 'list'>, {'nid001112': [0, 1, 2, 3]})
+[2025-12-11 15:33:45,707] [INFO] [launch.py:180:main] dist_world_size=4
+[2025-12-11 15:33:45,707] [INFO] [launch.py:184:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3
+[2025-12-11 15:33:45,723] [INFO] [launch.py:272:main] process 231565 spawned with command: ['/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python', '-u', 'train_ds_logger.py', '--local_rank=0', '--wandb_log', 'True']
+[2025-12-11 15:33:45,740] [INFO] [launch.py:272:main] process 231566 spawned with command: ['/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python', '-u', 'train_ds_logger.py', '--local_rank=1', '--wandb_log', 'True']
+[2025-12-11 15:33:45,757] [INFO] [launch.py:272:main] process 231567 spawned with command: ['/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python', '-u', 'train_ds_logger.py', '--local_rank=2', '--wandb_log', 'True']
+[2025-12-11 15:33:45,773] [INFO] [launch.py:272:main] process 231568 spawned with command: ['/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python', '-u', 'train_ds_logger.py', '--local_rank=3', '--wandb_log', 'True']
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 2416.25M
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+using fused AdamW: True
+number of parameters: 2416.25M
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+using fused AdamW: True
+number of parameters: 2416.25M
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+using fused AdamW: True
+number of parameters: 2416.25M
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+using fused AdamW: True
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/pscratch/sd/e/es_lh/nanoGPT/Deepspeed/train_ds_logger.py", line 386, in <module>
+[rank3]:     model.backward(loss)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+[rank3]:     ret_val = func(*args, **kwargs)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 2356, in backward
+[rank3]:     self._do_optimizer_backward(loss, retain_graph)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 2297, in _do_optimizer_backward
+[rank3]:     self.optimizer.backward(loss, retain_graph=retain_graph)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 2245, in backward
+[rank3]:     self.loss_scaler.backward(loss.float(), retain_graph=retain_graph)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/fp16/loss_scaler.py", line 65, in backward
+[rank3]:     scaled_loss.backward(retain_graph=retain_graph)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_tensor.py", line 581, in backward
+[rank3]:     torch.autograd.backward(
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/autograd/__init__.py", line 347, in backward
+[rank3]:     _engine_run_backward(
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+[rank3]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 986, in grad_handling_hook
+[rank3]:     self.process_gradients(param, i)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1522, in process_gradients
+[rank3]:     self.backward_prologue()
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 2210, in backward_prologue
+[rank3]:     buf_0 = torch.empty(int(self.reduce_bucket_size),
+[rank3]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.86 GiB. GPU 3 has a total capacity of 39.38 GiB of which 498.12 MiB is free. Including non-PyTorch memory, this process has 38.88 GiB memory in use. Of the allocated memory 36.09 GiB is allocated by PyTorch, and 220.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/pscratch/sd/e/es_lh/nanoGPT/Deepspeed/train_ds_logger.py", line 386, in <module>
+[rank2]:     model.backward(loss)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+[rank2]:     ret_val = func(*args, **kwargs)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 2356, in backward
+[rank2]:     self._do_optimizer_backward(loss, retain_graph)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 2297, in _do_optimizer_backward
+[rank2]:     self.optimizer.backward(loss, retain_graph=retain_graph)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 2245, in backward
+[rank2]:     self.loss_scaler.backward(loss.float(), retain_graph=retain_graph)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/fp16/loss_scaler.py", line 65, in backward
+[rank2]:     scaled_loss.backward(retain_graph=retain_graph)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_tensor.py", line 581, in backward
+[rank2]:     torch.autograd.backward(
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/autograd/__init__.py", line 347, in backward
+[rank2]:     _engine_run_backward(
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+[rank2]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 986, in grad_handling_hook
+[rank2]:     self.process_gradients(param, i)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1522, in process_gradients
+[rank2]:     self.backward_prologue()
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 2210, in backward_prologue
+[rank2]:     buf_0 = torch.empty(int(self.reduce_bucket_size),
+[rank2]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.86 GiB. GPU 2 has a total capacity of 39.38 GiB of which 354.12 MiB is free. Including non-PyTorch memory, this process has 39.03 GiB memory in use. Of the allocated memory 36.09 GiB is allocated by PyTorch, and 220.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/pscratch/sd/e/es_lh/nanoGPT/Deepspeed/train_ds_logger.py", line 386, in <module>
+[rank1]:     model.backward(loss)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+[rank1]:     ret_val = func(*args, **kwargs)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 2356, in backward
+[rank1]:     self._do_optimizer_backward(loss, retain_graph)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 2297, in _do_optimizer_backward
+[rank1]:     self.optimizer.backward(loss, retain_graph=retain_graph)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 2245, in backward
+[rank1]:     self.loss_scaler.backward(loss.float(), retain_graph=retain_graph)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/fp16/loss_scaler.py", line 65, in backward
+[rank1]:     scaled_loss.backward(retain_graph=retain_graph)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_tensor.py", line 581, in backward
+[rank1]:     torch.autograd.backward(
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/autograd/__init__.py", line 347, in backward
+[rank1]:     _engine_run_backward(
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+[rank1]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 986, in grad_handling_hook
+[rank1]:     self.process_gradients(param, i)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1522, in process_gradients
+[rank1]:     self.backward_prologue()
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 2210, in backward_prologue
+[rank1]:     buf_0 = torch.empty(int(self.reduce_bucket_size),
+[rank1]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.86 GiB. GPU 1 has a total capacity of 39.38 GiB of which 354.12 MiB is free. Including non-PyTorch memory, this process has 39.03 GiB memory in use. Of the allocated memory 36.09 GiB is allocated by PyTorch, and 220.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[RunLogger] Model params: 2,416,775,168 (2416.78 M), weights ~ 9.003 GB, full train state ~ 36.013 GB (theoretical)
+[2025-12-11 15:34:35,209] [WARNING] [torch_autocast.py:124:autocast_if_enabled] torch.autocast is enabled outside DeepSpeed but disabled within the DeepSpeed engine. If you are using DeepSpeed's built-in mixed precision, the engine will follow the settings in bf16/fp16 section. To use torch's native autocast instead, configure the `torch_autocast` section in the DeepSpeed config.

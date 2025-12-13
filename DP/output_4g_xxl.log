@@ -1,0 +1,312 @@
+W1211 10:49:21.461425 231886 torch/distributed/run.py:793] 
+W1211 10:49:21.461425 231886 torch/distributed/run.py:793] *****************************************
+W1211 10:49:21.461425 231886 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1211 10:49:21.461425 231886 torch/distributed/run.py:793] *****************************************
+Overriding config with /pscratch/sd/e/es_lh/nanoGPT/config/train_shakespeare_char.py:
+# train a miniature character-level shakespeare model
+# good for debugging and playing on macbooks and such
+
+out_dir = 'out-shakespeare-char'
+eval_interval = 250 # keep frequent because we'll overfit
+eval_iters = 200
+log_interval = 10 # don't print too too often
+
+# we expect to overfit on this small dataset, so only save when val improves
+always_save_checkpoint = False
+
+wandb_log = False # override via command line if you like
+wandb_project = 'shakespeare-char'
+wandb_run_name = 'mini-gpt'
+
+dataset = 'shakespeare_char'
+block_size = 256 # context of up to 256 previous characters
+gradient_accumulation_steps = 4 # 1 gpu: 1 # 1 node: 4 # 2 nodes: 8
+batch_size = 16 # 1 gpu: 64 # 1 node: 16 # 2 nodes: 8
+
+# baby GPT model :)
+n_layer = 48
+n_head = 32 # to make it balance with tp
+n_embd = 2048
+dropout = 0.2
+
+learning_rate = 1e-4 # with baby networks can afford to go a bit higher # 1e-3 initially
+max_iters = 5000
+lr_decay_iters = 5000 # make equal to max_iters usually
+min_lr = 1e-5 # learning_rate / 10 usually
+beta2 = 0.99 # make a bit bigger because number of tokens per iter is small
+
+warmup_iters = 100 # not super necessary potentially
+
+# on macbook also add
+# device = 'cpu'  # run on cpu only
+# compile = False # do not torch compile the model
+
+model_parallel = 4
+tensor_parallel = 4
+
+Overriding config with /pscratch/sd/e/es_lh/nanoGPT/config/train_shakespeare_char.py:
+# train a miniature character-level shakespeare model
+# good for debugging and playing on macbooks and such
+
+out_dir = 'out-shakespeare-char'
+eval_interval = 250 # keep frequent because we'll overfit
+eval_iters = 200
+log_interval = 10 # don't print too too often
+
+# we expect to overfit on this small dataset, so only save when val improves
+always_save_checkpoint = False
+
+wandb_log = False # override via command line if you like
+wandb_project = 'shakespeare-char'
+wandb_run_name = 'mini-gpt'
+
+dataset = 'shakespeare_char'
+block_size = 256 # context of up to 256 previous characters
+gradient_accumulation_steps = 4 # 1 gpu: 1 # 1 node: 4 # 2 nodes: 8
+batch_size = 16 # 1 gpu: 64 # 1 node: 16 # 2 nodes: 8
+
+# baby GPT model :)
+n_layer = 48
+n_head = 32 # to make it balance with tp
+n_embd = 2048
+dropout = 0.2
+
+learning_rate = 1e-4 # with baby networks can afford to go a bit higher # 1e-3 initially
+max_iters = 5000
+lr_decay_iters = 5000 # make equal to max_iters usually
+min_lr = 1e-5 # learning_rate / 10 usually
+beta2 = 0.99 # make a bit bigger because number of tokens per iter is small
+
+warmup_iters = 100 # not super necessary potentially
+
+# on macbook also add
+# device = 'cpu'  # run on cpu only
+# compile = False # do not torch compile the model
+
+model_parallel = 4
+tensor_parallel = 4
+
+Overriding config with /pscratch/sd/e/es_lh/nanoGPT/config/train_shakespeare_char.py:
+# train a miniature character-level shakespeare model
+# good for debugging and playing on macbooks and such
+
+out_dir = 'out-shakespeare-char'
+eval_interval = 250 # keep frequent because we'll overfit
+eval_iters = 200
+log_interval = 10 # don't print too too often
+
+# we expect to overfit on this small dataset, so only save when val improves
+always_save_checkpoint = False
+
+wandb_log = False # override via command line if you like
+wandb_project = 'shakespeare-char'
+wandb_run_name = 'mini-gpt'
+
+dataset = 'shakespeare_char'
+block_size = 256 # context of up to 256 previous characters
+gradient_accumulation_steps = 4 # 1 gpu: 1 # 1 node: 4 # 2 nodes: 8
+batch_size = 16 # 1 gpu: 64 # 1 node: 16 # 2 nodes: 8
+
+# baby GPT model :)
+n_layer = 48
+n_head = 32 # to make it balance with tp
+n_embd = 2048
+dropout = 0.2
+
+learning_rate = 1e-4 # with baby networks can afford to go a bit higher # 1e-3 initially
+max_iters = 5000
+lr_decay_iters = 5000 # make equal to max_iters usually
+min_lr = 1e-5 # learning_rate / 10 usually
+beta2 = 0.99 # make a bit bigger because number of tokens per iter is small
+
+warmup_iters = 100 # not super necessary potentially
+
+# on macbook also add
+# device = 'cpu'  # run on cpu only
+# compile = False # do not torch compile the model
+
+model_parallel = 4
+tensor_parallel = 4
+
+tokens per iteration will be: 16,384
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+Overriding config with /pscratch/sd/e/es_lh/nanoGPT/config/train_shakespeare_char.py:
+# train a miniature character-level shakespeare model
+# good for debugging and playing on macbooks and such
+
+out_dir = 'out-shakespeare-char'
+eval_interval = 250 # keep frequent because we'll overfit
+eval_iters = 200
+log_interval = 10 # don't print too too often
+
+# we expect to overfit on this small dataset, so only save when val improves
+always_save_checkpoint = False
+
+wandb_log = False # override via command line if you like
+wandb_project = 'shakespeare-char'
+wandb_run_name = 'mini-gpt'
+
+dataset = 'shakespeare_char'
+block_size = 256 # context of up to 256 previous characters
+gradient_accumulation_steps = 4 # 1 gpu: 1 # 1 node: 4 # 2 nodes: 8
+batch_size = 16 # 1 gpu: 64 # 1 node: 16 # 2 nodes: 8
+
+# baby GPT model :)
+n_layer = 48
+n_head = 32 # to make it balance with tp
+n_embd = 2048
+dropout = 0.2
+
+learning_rate = 1e-4 # with baby networks can afford to go a bit higher # 1e-3 initially
+max_iters = 5000
+lr_decay_iters = 5000 # make equal to max_iters usually
+min_lr = 1e-5 # learning_rate / 10 usually
+beta2 = 0.99 # make a bit bigger because number of tokens per iter is small
+
+warmup_iters = 100 # not super necessary potentially
+
+# on macbook also add
+# device = 'cpu'  # run on cpu only
+# compile = False # do not torch compile the model
+
+model_parallel = 4
+tensor_parallel = 4
+
+tokens per iteration will be: 16,384
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+tokens per iteration will be: 16,384
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+tokens per iteration will be: 16,384
+found vocab_size = 65 (inside data/shakespeare_char/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 2416.25M
+number of parameters: 2416.25M
+number of parameters: 2416.25M
+number of parameters: 2416.25M
+/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py:212: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py:212: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py:212: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py:212: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
+num decayed parameter tensors: 194, with 2,416,576,512 parameters
+num non-decayed parameter tensors: 97, with 198,656 parameters
+using fused AdamW: True
+compiling the model... (takes a ~minute)
+using fused AdamW: True
+compiling the model... (takes a ~minute)
+using fused AdamW: True
+compiling the model... (takes a ~minute)
+using fused AdamW: True
+compiling the model... (takes a ~minute)
+[RunLogger] Model params: 2,416,775,168 (2416.78 M), weights ~ 9.003 GB, full train state ~ 36.013 GB (theoretical)
+step 0: train loss 4.5928, val loss 4.5904
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py", line 387, in <module>
+[rank0]:     scaler.step(optimizer)
+[rank0]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/amp/grad_scaler.py", line 380, in step
+[rank0]:     return optimizer.step(*args, **kwargs)
+[rank0]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank0]:     out = func(*args, **kwargs)
+[rank0]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank0]:     ret = func(self, *args, **kwargs)
+[rank0]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/adamw.py", line 209, in step
+[rank0]:     has_complex = self._init_group(
+[rank0]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 632, in _fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/adamw.py", line 148, in _init_group
+[rank0]:     state["exp_avg"] = torch.zeros_like(
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 0 has a total capacity of 39.38 GiB of which 22.12 MiB is free. Including non-PyTorch memory, this process has 39.35 GiB memory in use. Of the allocated memory 37.28 GiB is allocated by PyTorch, and 469.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py", line 387, in <module>
+[rank1]:     scaler.step(optimizer)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/amp/grad_scaler.py", line 380, in step
+[rank1]:     return optimizer.step(*args, **kwargs)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank1]:     out = func(*args, **kwargs)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank1]:     ret = func(self, *args, **kwargs)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/adamw.py", line 209, in step
+[rank1]:     has_complex = self._init_group(
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 632, in _fn
+[rank1]:     return fn(*args, **kwargs)
+[rank1]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/adamw.py", line 148, in _init_group
+[rank1]:     state["exp_avg"] = torch.zeros_like(
+[rank1]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 1 has a total capacity of 39.38 GiB of which 40.12 MiB is free. Including non-PyTorch memory, this process has 39.33 GiB memory in use. Of the allocated memory 36.91 GiB is allocated by PyTorch, and 763.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py", line 387, in <module>
+[rank2]:     scaler.step(optimizer)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/amp/grad_scaler.py", line 380, in step
+[rank2]:     return optimizer.step(*args, **kwargs)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank2]:     out = func(*args, **kwargs)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank2]:     ret = func(self, *args, **kwargs)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/adamw.py", line 209, in step
+[rank2]:     has_complex = self._init_group(
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 632, in _fn
+[rank2]:     return fn(*args, **kwargs)
+[rank2]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/adamw.py", line 148, in _init_group
+[rank2]:     state["exp_avg"] = torch.zeros_like(
+[rank2]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 2 has a total capacity of 39.38 GiB of which 40.12 MiB is free. Including non-PyTorch memory, this process has 39.33 GiB memory in use. Of the allocated memory 36.91 GiB is allocated by PyTorch, and 763.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/pscratch/sd/e/es_lh/nanoGPT/DP/train_logger.py", line 387, in <module>
+[rank3]:     scaler.step(optimizer)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/amp/grad_scaler.py", line 380, in step
+[rank3]:     return optimizer.step(*args, **kwargs)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/optimizer.py", line 487, in wrapper
+[rank3]:     out = func(*args, **kwargs)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/optimizer.py", line 91, in _use_grad
+[rank3]:     ret = func(self, *args, **kwargs)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/adamw.py", line 209, in step
+[rank3]:     has_complex = self._init_group(
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py", line 632, in _fn
+[rank3]:     return fn(*args, **kwargs)
+[rank3]:   File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/optim/adamw.py", line 152, in _init_group
+[rank3]:     state["exp_avg_sq"] = torch.zeros_like(
+[rank3]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 3 has a total capacity of 39.38 GiB of which 48.12 MiB is free. Including non-PyTorch memory, this process has 39.32 GiB memory in use. Of the allocated memory 36.97 GiB is allocated by PyTorch, and 763.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]:[W1211 10:51:30.564949072 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+W1211 10:51:31.649845 231886 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 231955 closing signal SIGTERM
+W1211 10:51:31.650736 231886 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 231956 closing signal SIGTERM
+W1211 10:51:31.651079 231886 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 231958 closing signal SIGTERM
+E1211 10:51:32.065530 231886 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 2 (pid: 231957) of binary: /pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/python
+Traceback (most recent call last):
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/distributed/run.py", line 919, in main
+    run(args)
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/pscratch/sd/e/es_lh/venv/dist_dl_hw/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_logger.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-12-11_10:51:31
+  host      : nid001088-hsn0
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 231957)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
